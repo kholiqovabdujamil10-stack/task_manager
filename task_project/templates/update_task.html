@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Изменить задачу{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <h1>Изменить задачу</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <input
+            type="text"
+            name="title"
+            value="{{ task.title }}"
+            required
+        >
+
+        <textarea
+            name="caption"
+            rows="5"
+            required
+        >{{ task.caption }}</textarea>
+
+        <button type="submit" class="btn">
+            Сохранить изменения
+        </button>
+    </form>
+
+    <a href="{% url 'my_task' %}" class="btn secondary">
+        Назад
+    </a>
+</section>
+
+{% endblock %}

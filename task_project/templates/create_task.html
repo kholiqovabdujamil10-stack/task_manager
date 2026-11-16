@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Создать задачу | Task Manager{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <h1>Создать задачу</h1>
+    <p>Добавь новую задачу в свой список.</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <input
+            type="text"
+            name="title"
+            placeholder="Название задачи"
+            required
+        >
+
+        <textarea
+            name="caption"
+            placeholder="Описание задачи"
+            rows="5"
+            required
+        ></textarea>
+
+        <button type="submit" class="btn">
+            Создать задачу
+        </button>
+    </form>
+
+    <a href="{% url 'profile' %}" class="btn secondary">
+        Назад в профиль
+    </a>
+</section>
+
+{% endblock %}

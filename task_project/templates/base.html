@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Task Manager{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="{% url 'home' %}" class="logo">Task Manager</a>
+
+            <div class="nav-links">
+                <a href="{% url 'home' %}">Главная</a>
+                <a href="{% url 'registration' %}">Регистрация</a>
+                <a href="{% url 'login' %}">Войти</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>Task Manager © 2026</p>
+    </footer>
+
+</body>
+</html>

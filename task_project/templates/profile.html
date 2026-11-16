@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Мой профиль | Task Manager{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <h1>Личный кабинет</h1>
+
+    <p>Добро пожаловать, {{ request.user.username }}!</p>
+
+    <div class="hero-buttons">
+        <a href="{% url 'create_task' %}" class="btn">
+            Создать задачу
+        </a>
+
+        <a href="{% url 'my_task' %}" class="btn secondary">
+            Мои задачи
+        </a>
+
+        <a href="{% url 'logout' %}" class="btn secondary">
+            Выйти
+        </a>
+    </div>
+</section>
+
+{% endblock %}

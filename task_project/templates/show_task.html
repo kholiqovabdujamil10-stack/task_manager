@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Мои задачи | Task Manager{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <h1>Мои задачи</h1>
+    <p>Здесь находятся все твои задачи.</p>
+
+    <div class="tasks">
+        {% for task in tasks %}
+        <div class="task-card">
+            <h2>{{ task.title }}</h2>
+            <p>{{ task.caption }}</p>
+
+            {% if task.status %}
+                <span class="task-status completed">Выполнено</span>
+            {% else %}
+                <span class="task-status pending">Не Выполнено</span>
+            {% endif %}
+
+            <div class="hero-buttons">
+                <a href="{% url 'update_task' task.id %}" class="btn">
+                    Изменить
+                </a>
+
+                <form method="POST" action="{% url 'complete_task' task.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn secondary">
+                        {% if task.status %}
+                            Не Выполнено
+                        {% else %}
+                            Выполнено
+                        {% endif %}
+                    </button>
+                </form>
+
+                <form method="POST" action="{% url 'delete_task' task.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn secondary">
+                        Удалить
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% empty %}
+            <p>У тебя пока нет задач.</p>
+        {% endfor %}
+    </div>
+
+    <div class="hero-buttons">
+        <a href="{% url 'create_task' %}" class="btn">
+            Создать задачу
+        </a>
+
+        <a href="{% url 'profile' %}" class="btn secondary">
+            Назад в профиль
+        </a>
+    </div>
+</section>
+
+{% endblock %}

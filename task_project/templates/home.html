@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная | Task Manager{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <h1>Управляй своими </h1>
+
+    <p>
+        Создавай задачи, следи за их выполнением
+        и организуй своё время.
+    </p>
+
+    <div class="hero-buttons">
+        <a href="{% url 'registration' %}" class="btn">Зарегистрироваться</a>
+        <a href="{% url 'login' %}" class="btn secondary">Войти</a>
+    </div>
+</section>
+
+{% endblock %}
